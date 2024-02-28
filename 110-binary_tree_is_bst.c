@@ -33,5 +33,9 @@ int is_bst_util(const binary_tree_t *tree, int min, int max)
  */
 int binary_tree_is_bst(const binary_tree_t *tree)
 {
+	if (tree == NULL)
+	{
+		return (0);
+	}
 	return (is_bst_util(tree, INT_MIN, INT_MAX));
 }
