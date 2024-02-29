@@ -1,4 +1,5 @@
 #include "binary_trees.h"
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
 
 /**
  * avl_insert - Inserts a value in an AVL Tree
