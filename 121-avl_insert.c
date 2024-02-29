@@ -37,8 +37,7 @@ avl_t *avl_insert(avl_t **tree, int value)
 		return (NULL);
 	}
 
-	(*tree)->parent = (*tree)->parent;
-	binary_tree_balance(*tree);
+	(*tree)->height = 1 + MAX(binary_tree_height((*tree)->left), binary_tree_height((*tree)->right));
 
 	balance = binary_tree_balance(*tree);
 
