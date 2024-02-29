@@ -9,17 +9,27 @@
  */
 avl_t *array_to_avl(int *array, size_t size)
 {
-	avl_t *root;
+	avl_t *root, node, tmp;
 	size_t i;
 
 	if (array == NULL || size == 0)
-	return (NULL);
+		return (NULL);
 
 	root = NULL;
 
 	for (i = 0; i < size; i++)
 	{
-		avl_insert(&root, array[i]);
+		node = avl_insert(&root, array[i]);
+		if (node == NULL)
+		{
+			while (root != NULL)
+			{
+				tmp = root;
+				root = root->right;
+				free(tmp);
+			}
+			return (NULL);
+		}
 	}
 
 	return (root);
