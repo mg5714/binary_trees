@@ -9,8 +9,8 @@
  */
 avl_t *array_to_avl(int *array, size_t size)
 {
-	avl_t *root, node, tmp;
-	size_t i;
+	avl_t *root;
+	size_t i, j;
 
 	if (array == NULL || size == 0)
 		return (NULL);
@@ -19,16 +19,17 @@ avl_t *array_to_avl(int *array, size_t size)
 
 	for (i = 0; i < size; i++)
 	{
-		node = avl_insert(&root, array[i]);
-		if (node == NULL)
+		for (j = 0; j < i; j++)
 		{
-			while (root != NULL)
+			if (array[j] == array[i])
 			{
-				tmp = root;
-				root = root->right;
-				free(tmp);
+				break;
 			}
-			return (NULL);
+		}
+		if (j == i)
+		{
+			if (avl_insert(&tree, array[i]) == NULL)
+				return (NULL);
 		}
 	}
 
