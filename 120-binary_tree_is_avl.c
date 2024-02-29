@@ -57,9 +57,9 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 
 	left = binary_tree_height(tree->left);
 	right = binary_tree_height(tree->right);
-	height_diff = abs(left - right);
+	height_diff = left - right;
 
-	if (height_diff > 1)
+	if (height_diff < -1 || height_diff > 1)
 		return (0);
 
 	return (binary_tree_is_avl(tree->left) && binary_tree_is_avl(tree->right));
